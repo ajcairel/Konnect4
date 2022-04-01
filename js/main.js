@@ -11,6 +11,36 @@ let winner; // string set to null while the game is in play
 // circles on the gameBoard
 // message on the screen about winning/losing
 // message and coin to show who's turn it is
+const rows = document.querySelectorAll('tr');
+const slots = document.querySelectorAll('td');
+document.querySelector('table').addEventListener('click', checkIndex);
+
+
+
+// function checkBoard() {
+//     for (i = 0; i < slots.length; i++){
+//         slots[i].addEventListener('click', (evt) =>{
+//             console.log(`${evt.target.parentElement.rowIndex},${evt.target.cellIndex}`)
+//         });
+//     }
+
+// }
+
+// checkBoard();
+
+function checkIndex(evt) {
+    let cell = evt.target.cellIndex;
+    //console.log(cell);
+    let row = evt.target.parentElement.rowIndex; // rowIndex checks tr in relation to others
+    //console.log(row);
+
+    console.log(`Cell: ${cell} Row: ${row}`);
+}
+
+
+
+
+
 
 
 /*----- event listeners -----*/
@@ -18,9 +48,10 @@ let winner; // string set to null while the game is in play
 // listener for clicking the replay button 
 
 /*----- functions -----*/
-init();
-function init() {
-    gameBoard = [
+// init();
+// function init() {
+//     gameBoard = [
 
-    ];
-}
+//     ];
+// }
+ 
