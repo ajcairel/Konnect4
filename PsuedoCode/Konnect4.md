@@ -55,6 +55,8 @@ PsuedoCode
 	-Red vs Blue (change these, would like them to be images of a coin?)
 -Handle the player move 
 	-Each move must be checked to be valid. Invalid moves: already taken slot, 'floating' placement
+		-Address this by 'forcing' move to the bottom of the column, unless
+		it is already taken 
 	-Will be a click event
 -Check for a winner
 	-Winner is when someone gets 4 in a row (horizontal, vertical, or diagonal)

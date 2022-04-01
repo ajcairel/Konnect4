@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* background-image: url('https://thdaily.s3.us-west-1.amazonaws.com/final_size-ezgif.com-gif-maker_20210306235344.gif');
+    background-size: cover;   */
+  }
+  
+  html {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  h1, h3 {
+    color: cyan;
+  }
+  
+  
+  .gameBoard {
+    display: flex;
+    width: 700px;
+    height: 650px;
+    background: violet;
+    border: 5px dotted yellowgreen;
+    opacity: 0.5;
+    background-image: url('https://i1.sndcdn.com/artworks-000116719590-pmrtyu-t500x500.jpg');
+    background-size: cover;
+  }
+  
+  .slot {
+    width: 100px;
+    height: 100px;
+    background: cyan;
+    border: 1px solid-black;
+    border-radius: 50%;
+    opacity: 0.5;
+    
+  
+  }
