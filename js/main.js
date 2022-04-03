@@ -20,6 +20,7 @@ let winner; // string set to null while the game is in play
 // message and coin to show who's turn it is
 const rows = document.querySelectorAll('tr');
 const slots = document.querySelectorAll('td');
+const game = [...document.querySelectorAll('td')];
 
 /*----- event listeners -----*/
 document.querySelector('table').addEventListener('click', handleMove);
@@ -43,22 +44,36 @@ function init() {
 // checkBoard();
 let turn = 1;
 function handleMove(evt) {
-    let array = []
+    let location = []
     let cell = evt.target.cellIndex;
     //console.log(cell);
     let row = evt.target.parentElement.rowIndex; // rowIndex checks tr in relation to others
     //console.log(row);
+    console.log(row * cell);
     if (cell === undefined && row === undefined) return; // so they can't click the background and change the color 
     for (let i = 5; i > -1; i--) {
         if (gameBoard[i][cell] === null) {
-            evt.target.style.backgroundColor = lookup[turn]; //changes where they click 
+            console.log('Initial Array: ' + location.length);
+            location.push(rows[i].children[cell]);
+            console.log('Array after push: ' + location.length);
+            // location[0].style.backgroundColor = lookup[turn]; change color of cell at bottom (moved to render)
+            render(location);
+            // evt.target.style.backgroundColor = lookup[turn]; //changes where they click 
             gameBoard[i][cell]= turn;
             turn *= -1;
+            // render(i, cell);
             console.log(`Row: ${row} Cell: ${cell}`);
             return;
-            }
         }
     }
+}
+
+
+function render(arr) {
+    arr[0].style.backgroundColor = lookup[turn];
+    
+}
+
     //gameBoard[row][cell]= turn;
 
 // use the min to find the first spot to start checking for a win
