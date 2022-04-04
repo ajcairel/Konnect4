@@ -15,7 +15,7 @@ const player2Win = -4;
 let gameBoard; // array of arrays? board that will show the connect4 game
 let turn; // Object to handle whos turn it is, alternate between player1 and player2
 let winner; // string set to null while the game is in play 
-let tieArray = [];
+let tieArray;
 
 /*----- cached element references -----*/
 // circles on the gameBoard
@@ -24,6 +24,7 @@ let tieArray = [];
 const rows = document.querySelectorAll('tr');
 const slots = document.querySelectorAll('td');
 const resetBtn = document.getElementById('reset');
+const message = document.querySelector('h3');
 // const game = [...document.querySelectorAll('td')];
 
 /*----- event listeners -----*/
@@ -43,7 +44,9 @@ function init() {
         [null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null],
     ];
+    tieArray = [];
     resetBtn.style.visibility = 'hidden';
+    handleTurn();
 }
 // let turn = 1;
 function handleMove(evt) {
@@ -62,13 +65,13 @@ function handleMove(evt) {
             // rows[i].children[cell].style.backgroundImage = lookup[turn]; change image 
             console.log('Array after push: ' + location.length);
             // location[0].style.backgroundColor = lookup[turn]; change color of cell at bottom (moved to render)
-            renderMove(location); // render the move
             // evt.target.style.backgroundColor = lookup[turn]; //changes where they click 
-            gameBoard[i][cell]= turn;
-            turn *= -1;
+            gameBoard[i][cell]= turn; // gameBoard[i][cell] is the location of the last move played on the array of arrays
+            handleTurn();
+            renderMove(location); // render the move
+            //turn *= -1;
             tieArray.push('pls');
             tieCheck();
-            
             // render(i, cell);
             console.log(`Row: ${row} Cell: ${cell}`);
             return;
@@ -80,6 +83,16 @@ function handleMove(evt) {
 //     if (lookup[turn] !== null) {}
 //     arr[0].style.backgroundColor = lookup[turn];
 // }
+
+function handleTurn() {
+    if (turn === 1) {
+        message.innerHTML = `Naruto's turn!`;
+        turn *= -1;
+    } else {
+        message.innerHTML = `Sasuke's turn!`;
+        turn *= -1;
+    }
+}
 function renderMove(arr) {
     arr[0].style.backgroundImage = lookup[turn];
 }
@@ -101,6 +114,7 @@ function tieCheck() {
     // }
     if (tieArray.length === 42) {
         resetBtn.style.visibility = 'visible';
+        message.innerHTML = `There has been a stalemate!`;
     }
 }
 
