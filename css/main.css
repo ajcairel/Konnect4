@@ -10,6 +10,9 @@ html {
   display: flex;
   justify-content: center;
   text-align: center;
+  background-image: url('https://images.alphacoders.com/605/thumb-1920-605592.png');
+  background-attachment: fixed;
+  background-position: center;
 }
 
 h1, h3 {
@@ -21,20 +24,28 @@ h1, h3 {
   display: flex;
   width: 700px;
   height: 650px;
-  background: violet;
-  border: 5px dotted yellowgreen;
-  opacity: 0.5;
-  background-image: url('https://i1.sndcdn.com/artworks-000116719590-pmrtyu-t500x500.jpg');
-  background-size: cover;
+  border: 5px dotted yellow;
+  box-shadow: 10px 10px 8px #888888;
+  /* opacity: 0.75; */
+  /* background-image: url('https://i1.sndcdn.com/artworks-000116719590-pmrtyu-t500x500.jpg'); */
+  background-image: url('https://c.tenor.com/yd7Ntm5sUHMAAAAC/sasuke-naruto.gif');
+  background-size: 700px 650px;
 }
 
 #slot {
   width: 100px;
   height: 100px;
-  background: plum;
+  background: black;
   border: 1px solid-black;
   border-radius: 50%;
-  opacity: 0.5;
-  
-
+  opacity: 0.75;
+  background-image: url('https://allninjagear.com/images/thumbs/0000102_naruto-shuriken-throwing-star_580.jpeg');
+  /* background-size: contain;
+  background-repeat: no-repeat; */
+  background-size: cover;
+  background-position: center;
+  /* background-size: cover; */
 }
+
+
+
