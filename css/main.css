@@ -2,8 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* background-image: url('https://thdaily.s3.us-west-1.amazonaws.com/final_size-ezgif.com-gif-maker_20210306235344.gif');
-  background-size: cover;   */
 }
 
 html {
@@ -17,6 +15,7 @@ html {
 
 h1, h3 {
   color: cyan;
+
 }
 
 
@@ -24,28 +23,31 @@ h1, h3 {
   display: flex;
   width: 700px;
   height: 650px;
-  border: 5px dotted yellow;
+  /* border: 5px ridge yellow; */
+  border-left: 5px ridge purple;
+  border-top: 5px ridge yellow;
+  border-right: 5px ridge yellow;
+  border-bottom: 5px ridge purple;
   box-shadow: 10px 10px 8px #888888;
-  /* opacity: 0.75; */
-  /* background-image: url('https://i1.sndcdn.com/artworks-000116719590-pmrtyu-t500x500.jpg'); */
-  background-image: url('https://c.tenor.com/yd7Ntm5sUHMAAAAC/sasuke-naruto.gif');
+  background-image: url('https://c.tenor.com/Psk_hwm7eFUAAAAC/sasuke-uchiha-naruto.gif');
   background-size: 700px 650px;
+  background-position: center;
 }
 
 #slot {
   width: 100px;
   height: 100px;
-  background: black;
+  background: white;
   border: 1px solid-black;
   border-radius: 50%;
-  opacity: 0.90;
-  background-image: url('https://allninjagear.com/images/thumbs/0000102_naruto-shuriken-throwing-star_580.jpeg');
-  /* background-size: contain;
-  background-repeat: no-repeat; */
+  opacity: 0.5;
+  background-image: url('https://media0.giphy.com/media/K9AnZe1fuZb68/200.gif');
   background-size: cover;
   background-position: center;
-  /* background-size: cover; */
+
 }
+
+
 
 
 

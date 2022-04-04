@@ -3,10 +3,10 @@
 // Use an object like we did with tic tac toe, holding the players color 
 const lookup = {
     // '1': 'cyan',
-    '1': "url('https://i.makeagif.com/media/8-15-2018/9-5IZa.gif')",
+    '1': "url('https://static.wikia.nocookie.net/naruto/images/8/89/Uzumaki_Symbol.svg/revision/latest/scale-to-width-down/200?cb=20180407232103')",
     // '-1': 'magenta',
-    '-1': "url('https://i.gifer.com/79du.gif')",
-    'null': "url('https://allninjagear.com/images/thumbs/0000102_naruto-shuriken-throwing-star_580.jpeg')"
+    '-1': "url('https://static.wikia.nocookie.net/eroninja/images/2/23/UchihaWappen.png/revision/latest?cb=20180322234129')",
+    'null': "url('https://media0.giphy.com/media/K9AnZe1fuZb68/200.gif')"
   };
 const player1Win = 4;
 const player2Win = -4;
@@ -104,7 +104,7 @@ function resetGame() {
             rows[i].children[j].style.backgroundImage = lookup.null;
         }
     }
-    init();
+   init();
 
 }
 
