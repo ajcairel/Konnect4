@@ -77,16 +77,21 @@ function handleMove(evt) {
             renderMove(location); // render the move
             tieArray.push('pls');
             const minCol = min(cell);
+            console.log(cell);
+            console.log(minCol);
             const maxCol = max(i, gameBoard[0].length - 1); // 7 - 1 = 6
+            console.log(maxCol);
             const minRow = min(cell);
             const maxRow = max(cell, gameBoard.length - 1);
-            horizontalWinCheck(i, cell, minCol, maxCol);
+            horizontalWinCheck(i, minCol, maxCol);
             tieCheck();
             // render(i, cell);
             console.log(`Row: ${row} Col: ${cell}`);
             return;
-        }
+        } 
+
     }
+    message.innerHTML = (`Please select a valid move!`); 
 }
 
 // function render(arr) {
@@ -136,20 +141,28 @@ function tieCheck() {
 // relative to the last played move
 
 // row, column, minimumColumn, maximumColumn
-function horizontalWinCheck(r, c, minC, maxC) { 
+function horizontalWinCheck(r, minC, maxC) { 
     console.log('MinC: ' + minC + ' maxC: ' + maxC);
-    for (let x = r, c = minC; c <= maxC; c++) {
-        console.log('x: ' + r + ' c: ' +c  + ' minC: ' + minC + ' minR: ' + maxC);
-        if (Math.abs(gameBoard[x][c] + gameBoard[x][c+1] + 
-            gameBoard[x][c+2] + gameBoard[x][c+3] === 4)) {
-            announceWinner();
+    for (let row = r, col = minC; col <= maxC; col++) {
+        const check = [gameBoard[row][col], gameBoard[row][col+1], 
+        gameBoard[row][col+2], gameBoard[row][col+3]];
+        let four = 0;
+        for (let i = 0; i < check.length; i++) {
+            four += check[i];
         }
+        if (Math.abs(four) === 4) return announceWinner();
     }
+}
+
+function verticalWinCheck(c, minR, maxR) {
+    
 }
 
 function announceWinner() {
     message.innerHTML = `The winner is ${names[turn]}!`;
     resetBtn.style.visibility = 'visible';
+    winner = ':P';
+
 
 }
     
