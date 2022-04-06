@@ -32,6 +32,27 @@ const backgroundImg = document.querySelector('div');
 const min = num => Math.max(num - 3, 0);
 const max = (num, max) => Math.min(num + 3, max);
 
+// let arraycheck = [];
+// console.log(slots);
+// let firstRow = slots.splice(0,6);
+// let secondRow = slots.splice(0,6);
+// let thirdRow = slots.splice(0,6);
+// let fourthRow = slots.splice(0,6);
+// let fifthRow = slots.splice(0,6);
+// let sixthRow = slots.splice(0,6);
+// console.log(firstRow);
+// console.log(secondRow);
+// console.log(thirdRow);
+// console.log(fourthRow);
+// console.log(fifthRow);
+// console.log(slots);
+
+// arraycheck.push(firstRow);
+// arraycheck.push(secondRow);
+// console.log(arraycheck);
+
+// slots[1].style.backgroundImage = lookup['-1']; can change render 
+
 
 /*----- event listeners -----*/
 document.querySelector('table').addEventListener('click', handleMove);
@@ -48,45 +69,59 @@ function init() {
         [null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null]
+        // [0, 0, 0, 0, 0, 0, 0],
+        // [0, 0, 0, 0, 0, 0, 0],
+        // [0, 0, 0, 0, 0, 0, 0],
+        // [0, 0, 0, 0, 0, 0, 0],
+        // [0, 0, 0, 0, 0, 0, 0],
+        // [0, 0, 0, 0, 0, 0, 0]
     ];
     tieArray = [];
     resetBtn.style.visibility = 'hidden';
-    winner = null;
+    winner = false;
     handleTurn();
 }
 // let turn = 1;
 function handleMove(evt) {
     let location = [];
-    let cell = evt.target.cellIndex; //index of the cell within the row
-    //console.log(cell);
+    let col = evt.target.cellIndex; //index of the col within the row
+    console.log("COL:" + col);
+    console.log('typeof Col: ' + typeof(col));
+    //console.log col);
     let row = evt.target.parentElement.rowIndex; // rowIndex checks tr in relation to others
     //console.log(row);
-    //console.log(row * cell);
-    if (winner !== null) return; // disallow moves if someone won
-    if (cell === undefined && row === undefined) return; // so they can't click the background and change the color 
+    //console.log(row * col);
+    if (winner === true) return; // disallow moves if someone won
+    if  (col === undefined && row === undefined) return; // so they can't click the background and change the color 
     for (let i = gameBoard.length - 1; i > -1; i--) { // start at the bottom of the rows
-        if (gameBoard[i][cell] === null) {
+        if (gameBoard[i][col] === null) {
             //console.log('Initial Array: ' + location.length);
-            location.push(rows[i].children[cell]);
-            // rows[i].children[cell].style.backgroundImage = lookup[turn]; //change image (moved to render)
-            // location[0].style.backgroundColor = lookup[turn]; change color of cell at bottom (moved to render)
+            location.push(rows[i].children[col]);
+            // rows[i].children col].style.backgroundImage = lookup[turn]; //change image (moved to render)
+            // location[0].style.backgroundColor = lookup[turn]; change color of col at bottom (moved to render)
             // evt.target.style.backgroundColor = lookup[turn]; //changes where they click 
-            gameBoard[i][cell]= turn; // gameBoard[i][cell] is the location of the last move played on the array of arrays
+            gameBoard[i][col]= turn; // gameBoard[i] col] is the location of the last move played on the array of arrays
             handleTurn();
             renderMove(location); // render the move
             tieArray.push('pls');
-            const minCol = min(cell);
-            console.log(cell);
-            console.log(minCol);
-            const maxCol = max(i, gameBoard[0].length - 1); // 7 - 1 = 6
-            console.log(maxCol);
-            const minRow = min(cell);
-            const maxRow = max(cell, gameBoard.length - 1);
+            const minCol = min(col);
+            // console.log( col: ' + col);
+            // console.log(`Row: ${row} Col: ${col}`); FIRST
+            console.log(`Row: ${i} Col: ${col}`);
+            //console.log(cells[
+            // console.log(minCol);
+            const maxCol = max(col, gameBoard[0].length - 1); // 7 - 1 = 6
+            // console.log(maxCol);
+            const minRow = min(i);
+            console.log('MINROW: ' + minRow);
+            const maxRow = max(i, gameBoard.length - 1);
+            console.log('MAX ROW: ' + maxRow);
             horizontalWinCheck(i, minCol, maxCol);
+            verticalWinCheck(col, minRow, maxRow); // -1 does not work
+            leftDiagonalCheck(i,col, Math.max(i-col, 0), maxRow, Math.max(col-i, 0), col+(5-i));
             tieCheck();
-            // render(i, cell);
-            console.log(`Row: ${row} Col: ${cell}`);
+            // render(i, col);
             return;
         } 
 
@@ -110,6 +145,7 @@ function handleTurn() {
 }
 function renderMove(arr) {
     arr[0].style.backgroundImage = lookup[turn];
+    console.log(arr[0]);
 }
 
 
@@ -135,44 +171,86 @@ function tieCheck() {
     }
 }
 
-    //gameBoard[row][cell]= turn;
+    //gameBoard[row] col]= turn;
 
 // use the min to find the first spot to start checking for a win
 // relative to the last played move
 
 // row, column, minimumColumn, maximumColumn
 function horizontalWinCheck(r, minC, maxC) { 
-    console.log('MinC: ' + minC + ' maxC: ' + maxC);
-    for (let row = r, col = minC; col <= maxC; col++) {
-        const check = [gameBoard[row][col], gameBoard[row][col+1], 
-        gameBoard[row][col+2], gameBoard[row][col+3]];
+    //console.log('MinC: ' + minC + ' maxC: ' + maxC);
+    for (let row = r, column = minC; column <= maxC; column++) {
+        const check = [gameBoard[row][column], gameBoard[row][column+1], gameBoard[row][column+2], gameBoard[row][column+3]];
+        // console.log('first: ' + gameBoard[row][column]);
+        // console.log('second ' + gameBoard[row][column+1]);
+        // console.log('third ' + gameBoard[row][column+2]);
+        // console.log('fourth' + gameBoard[row][column+3]);
+        // console.log('---------');
+
+        let four = 0;
+        for (let i = 0; i < check.length; i++) {
+        four += check[i];
+        }
+        //console.log('horizontal: ' + four);
+        if (Math.abs(four) === 4) return announceWinner();
+    }
+}
+
+
+
+
+
+function verticalWinCheck(focalCol, minR, maxR) {
+    // debugger;
+    for (let column = focalCol, row = minR; row <= maxR; row++) { // maxR
+        if (row + 3 > maxR) return;
+        let check = [gameBoard[row][column], gameBoard[row+1][column],
+            gameBoard[row+2][column], gameBoard[row+3][column]];
+        let four = 0;
+        for (let i = 0; i < check.length; i++) {
+            four += check[i];
+        }
+        // console.log('vertical: ' + four);
+        if (Math.abs(four) === 4) return announceWinner();
+    }
+}
+
+
+
+function leftDiagonalCheck(focalRow, focalCol, minR, maxR, minC, maxC) {
+    console.log('focalRow: ' + focalRow);
+    console.log('focalCol: ' + focalCol);
+    console.log('minR: ' + minR); 
+    console.log('maxR: ' + maxR);
+    console.log('minC: ' + minC); 
+    console.log('maxC: ' + maxC);
+    
+    for (let row = minR, column = minC; row <= maxR || column <= maxC; row++, column++) {
+        if (column + 3 > maxC) return;
+        const check = [gameBoard[row][column], gameBoard[row+1][column+1], 
+        gameBoard[row+2][column+2], gameBoard[row+3][column+3]];
+    
+
         let four = 0;
         for (let i = 0; i < check.length; i++) {
             four += check[i];
         }
         if (Math.abs(four) === 4) return announceWinner();
     }
+
+
 }
 
-function verticalWinCheck(c, minR, maxR) {
-    
-}
+
 
 function announceWinner() {
     message.innerHTML = `The winner is ${names[turn]}!`;
     resetBtn.style.visibility = 'visible';
-    winner = ':P';
+    winner = true;
 
 
 }
     
-
-
-   
-
-
-
-
 // const { row: focalRow, col: focalCol } = lastChecker;
 // const minCol = min(focalCol);
 // const maxCol = max(focalCol, this.colCount-1);
@@ -201,3 +279,4 @@ function announceWinner() {
 //     ];
 // }
  
+

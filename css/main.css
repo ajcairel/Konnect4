@@ -1,5 +1,4 @@
 * {
-  
   box-sizing: border-box;
 }
 
@@ -8,7 +7,11 @@ html {
   justify-content: center;
   text-align: center;
   background-image: url('https://images.alphacoders.com/605/thumb-1920-605592.png');
-  background-attachment: fixed;
+  background-attachment: fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   background-position: center;
 }
 
@@ -33,6 +36,11 @@ h1, h3 {
   background-position: center;
 }
 
+
+
+
+
+
 #slot {
   width: 100px;
   height: 100px;
@@ -43,7 +51,6 @@ h1, h3 {
   background-image: url('https://media0.giphy.com/media/K9AnZe1fuZb68/200.gif');
   background-size: cover;
   background-position: center;
-
 }
 
 
