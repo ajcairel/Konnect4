@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  /* height: 100vh; */
 }
 
 html {
@@ -34,6 +35,8 @@ h1, h3 {
   background-image: url('https://c.tenor.com/Psk_hwm7eFUAAAAC/sasuke-uchiha-naruto.gif');
   background-size: 700px 650px;
   background-position: center;
+  /*  */
+  
 }
 
 
