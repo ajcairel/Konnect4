@@ -2,8 +2,8 @@
 // The colors that will be used as the choices
 // Use an object like we did with tic tac toe, holding the players color 
 const lookup = {
-  '1': "url('https://static.wikia.nocookie.net/naruto/images/8/89/Uzumaki_Symbol.svg/revision/latest/scale-to-width-down/200?cb=20180407232103')",
-  '-1': "url('https://static.wikia.nocookie.net/eroninja/images/2/23/UchihaWappen.png/revision/latest?cb=20180322234129')",
+  '1': "url('https://i.imgur.com/0digGXP.png')",
+  '-1': "url('https://i.imgur.com/Ko4W3mX.jpg')",
   'null': "url('https://media0.giphy.com/media/K9AnZe1fuZb68/200.gif')"
 };
 
