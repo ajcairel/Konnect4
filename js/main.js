@@ -13,16 +13,18 @@ const names = {
 };
 
 /*----- app's state (variables) -----*/
-let gameBoard; // array of arrays? board that will show the connect4 game
-let turn; // Object to handle whos turn it is, alternate between player1 and player2
-let winner; // string set to null while the game is in play 
-let tieArray; // Array to cheese the way to handle a tie 
+let gameBoard; 
+let turn; 
+let winner; 
+let tieArray; 
 
 /*----- cached element references -----*/
 
 const rows = document.querySelectorAll('tr');
 const slots = document.querySelectorAll('td');
 const resetBtn = document.getElementById('reset');
+const sasuke = document.getElementById('sasuke');
+const naruto = document.getElementById('naruto');
 const message = document.querySelector('h3');
 const backgroundImg = document.querySelector('div');
 const min = num => Math.max(num - 3, 0);
@@ -57,12 +59,9 @@ function init() {
 }
 
 function handleMove(evt) {
-  if (winner === true) return; // disallow moves if someone won
+  if (winner === true) return; 
   renderOpacity();
-  //renderTurn();
-  // let location = [];
-  let col = evt.target.cellIndex; //index of the col within the row
-  let row = evt.target.parentElement.rowIndex; // rowIndex checks tr in relation to others
+  let col = evt.target.cellIndex; 
   for (let i = gameBoard.length - 1; i > -1; i--) { // start at the bottom of the rows
       if (gameBoard[i][col] === null) {
         renderTurn();
@@ -76,11 +75,12 @@ function handleMove(evt) {
         checkBackSlash(i, col);
         tieArray.push('XO');
         tieCheck();
-          return;
+        return;
       }
 
   }
-  message.innerHTML = (`Please select a valid move!`);
+  renderValidMove();
+  // message.innerHTML = (`Please select a valid move!`);
 }
 
 
@@ -89,8 +89,11 @@ function render() {
     for (let j = gameBoard.length; j > -1; j--) {
     const SLOT = rows[i].children[j];
     SLOT.style.backgroundImage = lookup[gameBoard[i][j]];
-  }
-      
+  } 
+}
+
+function renderValidMove() {
+  message.innerHTML = (`Please select a valid move!`);
 }
 
 function renderOpacity() {
@@ -106,11 +109,26 @@ function renderOpacity() {
 }
 
 function renderTurn() {
+  if (winner === true && turn == 1) {
+    naruto.style.visibility = 'visible';
+    sasuke.style.visibility = 'hidden';
+    return;
+  }
+  if (winner === true && turn == -1) {
+    naruto.style.visibility = 'hidden';
+    sasuke.style.visibility = 'visible';
+    return;
+  }
+
   if (turn === 1) {
       message.innerHTML = `Naruto's turn! --------------->`;
+      naruto.style.visibility = 'visible';
+      sasuke.style.visibility = 'hidden';
       turn *= -1;
   } else {
       message.innerHTML = `<--------------- Sasuke's turn!`;
+      naruto.style.visibility = 'hidden';
+      sasuke.style.visibility = 'visible';
       turn *= -1;
   }
 }
@@ -140,18 +158,16 @@ function tieCheck() {
   }
 }
 
-
-
 function checkHorzWin(colIdx, rowIdx) {
   const player = gameBoard[colIdx][rowIdx];
   let count = 1; 
-  //count up
-  let idx = rowIdx + 1; // initialize to one above 
+  
+  let idx = rowIdx + 1; 
   while (idx < gameBoard.length && gameBoard[colIdx][idx] === player) {
     count++;
     idx++;
   }
-  idx = rowIdx - 1; // initialize to one above 
+  idx = rowIdx - 1;  
   while (idx >= 0 && gameBoard[colIdx][idx] === player) {
     count++;
     idx--;
@@ -163,13 +179,12 @@ function checkHorzWin(colIdx, rowIdx) {
 function checkVertWin(colIdx, rowIdx) {
   const player = gameBoard[colIdx][rowIdx];
   let count = 1; 
-  //count right
-  let idx = colIdx + 1; // initialize to one above 
+  let idx = colIdx + 1; 
   while (idx < gameBoard.length && gameBoard[idx][rowIdx] === player) {
     count++;
     idx++;
   }
-  idx = colIdx - 1; // initialize to one above 
+  idx = colIdx - 1;  
   while (idx >= 0 && gameBoard[idx][rowIdx] === player) {
     count++;
     idx--;
@@ -180,15 +195,14 @@ function checkVertWin(colIdx, rowIdx) {
 function checkForwardSlash(colIdx, rowIdx) {
   const player = gameBoard[colIdx][rowIdx];
   let count = 1; 
-  //count right
-  let idx1 = colIdx - 1;// initialize to one above 
+  let idx1 = colIdx - 1;
   let idx2 = rowIdx + 1;
   while (idx1 >= 0  && idx2 < gameBoard.length && gameBoard[idx1][idx2] === player) {
     count++;
     idx1--;
     idx2++;
   }
-  idx1 = colIdx + 1; // initialize to one above 
+  idx1 = colIdx + 1;  
   idx2 = rowIdx - 1
   while (idx1 < gameBoard.length && idx2 >= 0 && gameBoard[idx1][idx2] === player) {
     count++;
@@ -201,15 +215,14 @@ function checkForwardSlash(colIdx, rowIdx) {
 function checkBackSlash(colIdx, rowIdx) {
   const player = gameBoard[colIdx][rowIdx];
   let count = 1; 
-  //count right
-  let idx1 = colIdx - 1;// initialize to one above 
+  let idx1 = colIdx - 1; 
   let idx2 = rowIdx - 1;
   while (idx1 >= 0  && idx2 <= 0 && gameBoard[idx1][idx2] === player) {
     count++;
     idx1--;
     idx2--;
   }
-  idx1 = colIdx + 1; // initialize to one above 
+  idx1 = colIdx + 1; 
   idx2 = rowIdx + 1
   while (idx1 < gameBoard.length && idx2 < gameBoard[0].length && gameBoard[idx1][idx2] === player) {
     count++;
@@ -223,5 +236,9 @@ function renderWinner() {
   message.innerHTML = `The winner is ${names[turn]}!`;
   resetBtn.style.visibility = 'visible';
   winner = true;
+  renderTurn();
+  renderOpacity();
+
+  
 }
 
