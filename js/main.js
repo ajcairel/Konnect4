@@ -148,6 +148,9 @@ function tieCheck() {
   if (tieArray.length === 42) {
     resetBtn.style.visibility = 'visible';
     message.innerHTML = `There has been a stalemate!`;
+    naruto.style.visibility = 'visible';
+    sasuke.style.visibility = 'visible';
+
   }
 }
 
@@ -164,7 +167,7 @@ function checkHorzWin(colIdx, rowIdx) {
     count++;
     idx--;
   }
-  return count === 4 ? renderWinner() : null; 
+  return count >= 4 ? renderWinner() : null; 
 }
 
 function checkVertWin(colIdx, rowIdx) {
@@ -200,7 +203,7 @@ function checkForwardSlash(colIdx, rowIdx) {
     idx1++;
     idx2--;
   }
-  return count === 4 ? renderWinner() : null; 
+  return count >= 4 ? renderWinner() : null; 
 }
 
 function checkBackSlash(colIdx, rowIdx) {
@@ -208,19 +211,19 @@ function checkBackSlash(colIdx, rowIdx) {
   let count = 1; 
   let idx1 = colIdx - 1; 
   let idx2 = rowIdx - 1;
-  while (idx1 >= 0  && idx2 <= 0 && gameBoard[idx1][idx2] === player) {
+  while (idx1 >= 0  && idx2 >= 0 && gameBoard[idx1][idx2] === player) {
     count++;
     idx1--;
     idx2--;
   }
   idx1 = colIdx + 1; 
   idx2 = rowIdx + 1
-  while (idx1 < gameBoard.length && idx2 < gameBoard[0].length && gameBoard[idx1][idx2] === player) {
+  while (idx1 < gameBoard.length-1 && idx2 < gameBoard[0].length-1 && gameBoard[idx1][idx2] === player) {
     count++;
     idx1++;
     idx2++;
   }
-  return count === 4 ? renderWinner() : null; 
+  return count >= 4 ? renderWinner() : null; 
 }
 
 function renderWinner() {
