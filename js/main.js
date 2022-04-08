@@ -61,10 +61,10 @@ function init() {
 
 function handleMove(evt) {
   if (winner === true) return; 
-  renderOpacity();
   let col = evt.target.cellIndex; 
   for (let i = gameBoard.length - 1; i > -1; i--) { // start at the bottom of the rows
-      if (gameBoard[i][col] === null) {
+    if (gameBoard[i][col] === null) {
+        renderOpacity();
         renderTurn();
         // location.push(rows[i].children[col]);
         gameBoard[i][col]= turn; // gameBoard[i] col] is the location of the last move played on the array of arrays
