@@ -1,5 +1,5 @@
 <div align="center">
-   <h1>:snake: Konnect 4 :fox_face:</h1>
+   <h1> <img src="https://i.imgur.com/Ko4W3mX.jpg"/> Konnect 4 <img src="https://i.imgur.com/0digGXP.png"/></h1>
    <h3><a href="https://ajcairel.github.io/Konnect4/">Play the Game!</a></h3>
    <h5>Alexander Cairel</h5>                             
    <a href="[github page]" target="_blank">
@@ -55,7 +55,7 @@
 <summary>How to Play</summary>
 <ol>
 <li>Try to build a row of 4 (or more) checkers while keeping your opponent from doing the same.</li>
-<li>Horizontal, Vertical, and Diagonal.</li>
+<li>Horizontal, Vertical, and Diagonal ways to win.</li>
 </ol>
 </details>
 
