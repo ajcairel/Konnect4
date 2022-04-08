@@ -1,6 +1,4 @@
 /*----- constants -----*/
-// The colors that will be used as the choices
-// Use an object like we did with tic tac toe, holding the players color 
 const lookup = {
   '1': "url('https://i.imgur.com/0digGXP.png')",
   '-1': "url('https://i.imgur.com/Ko4W3mX.jpg')",
@@ -27,9 +25,7 @@ const sasuke = document.getElementById('sasuke');
 const naruto = document.getElementById('naruto');
 const title = document.getElementById('title');
 const message = document.querySelector('h3');
-const backgroundImg = document.querySelector('div');
-const min = num => Math.max(num - 3, 0);
-const max = (num, max) => Math.min(num + 3, max);
+
 
 
 
@@ -62,28 +58,23 @@ function init() {
 function handleMove(evt) {
   if (winner === true) return; 
   let col = evt.target.cellIndex; 
-  for (let i = gameBoard.length - 1; i > -1; i--) { // start at the bottom of the rows
+  for (let i = gameBoard.length - 1; i > -1; i--) { 
     if (gameBoard[i][col] === null) {
-        renderOpacity();
-        renderTurn();
-        // location.push(rows[i].children[col]);
-        gameBoard[i][col]= turn; // gameBoard[i] col] is the location of the last move played on the array of arrays
-        render();
-        // tieArray.push('pls'); //.includes
-        checkHorzWin(i, col);
-        checkVertWin(i, col);
-        checkForwardSlash(i, col);
-        checkBackSlash(i, col);
-        tieArray.push('XO');
-        tieCheck();
-        return;
-      }
-
+      renderOpacity();
+      renderTurn();
+      gameBoard[i][col]= turn; 
+      render();
+      checkHorzWin(i, col);
+      checkVertWin(i, col);
+      checkForwardSlash(i, col);
+      checkBackSlash(i, col);
+      tieArray.push('XO');
+      tieCheck();
+      return;
+    }
   }
   renderValidMove();
-  // message.innerHTML = (`Please select a valid move!`);
 }
-
 
 function render() {
   for (let i = gameBoard.length - 1; i > -1; i--)
@@ -114,39 +105,36 @@ function renderTurn() {
     naruto.style.visibility = 'visible';
     sasuke.style.visibility = 'hidden';
     message.style.color = 'yellow';
-    
     return;
   }
   if (winner === true && turn == -1) {
     naruto.style.visibility = 'hidden';
     sasuke.style.visibility = 'visible';
     message.style.color = 'purple';
-    
     return;
   }
-
   if (turn === 1) {
-      message.innerHTML = `Naruto's turn! --------------->`;
-      naruto.style.visibility = 'visible';
-      sasuke.style.visibility = 'hidden';
-      title.style.color = 'purple';
-      message.style.color = 'yellow';
-      turn *= -1;
-    } else {
-      message.innerHTML = `<--------------- Sasuke's turn!`;
-      naruto.style.visibility = 'hidden';
-      sasuke.style.visibility = 'visible';
-      title.style.color = 'yellow';
-      message.style.color = 'purple';
-      turn *= -1;
+    message.innerHTML = `Naruto's turn! --------------->`;
+    naruto.style.visibility = 'visible';
+    sasuke.style.visibility = 'hidden';
+    title.style.color = 'purple';
+    message.style.color = 'yellow';
+    turn *= -1;
+  } else {
+    message.innerHTML = `<--------------- Sasuke's turn!`;
+    naruto.style.visibility = 'hidden';
+    sasuke.style.visibility = 'visible';
+    title.style.color = 'yellow';
+    message.style.color = 'purple';
+    turn *= -1;
   }
 }
 
 function resetGame() {
   for (let i = gameBoard.length - 1; i > -1; i--) {
-      for (let j = 0; j < 7; j++) {
-          rows[i].children[j].style.backgroundImage = lookup.null;
-      }
+    for (let j = 0; j < 7; j++) {
+      rows[i].children[j].style.backgroundImage = lookup.null;
+    }
   }
   for (let i = gameBoard.length - 1; i > -1; i--)
     for (let j = gameBoard.length; j > -1; j--) {
@@ -154,16 +142,12 @@ function resetGame() {
       SLOT.style.opacity = '0.5';
     }
   init();
-
 }
 
 function tieCheck() {
- 
   if (tieArray.length === 42) {
-      resetBtn.style.visibility = 'visible';
-      message.innerHTML = `There has been a stalemate!`;
-      // backgroundImg.style.backgroundImage = "url('https://i.pinimg.com/originals/88/d1/85/88d1854273d2638b7b4aeca97b27a861.jpg')";
-
+    resetBtn.style.visibility = 'visible';
+    message.innerHTML = `There has been a stalemate!`;
   }
 }
 
@@ -182,7 +166,6 @@ function checkHorzWin(colIdx, rowIdx) {
   }
   return count === 4 ? renderWinner() : null; 
 }
-
 
 function checkVertWin(colIdx, rowIdx) {
   const player = gameBoard[colIdx][rowIdx];
@@ -246,7 +229,5 @@ function renderWinner() {
   winner = true;
   renderTurn();
   renderOpacity();
-
-  
 }
 
