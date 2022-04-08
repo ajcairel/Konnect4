@@ -68,7 +68,7 @@
 ## :fast_forward: Next Steps   
 
 ### Upcoming Features
-
+- [ ] Move from px to rem in CSS
 - [ ] Mobile-friendly version
 - [ ] Highlight *only* the winning 4+ in a row
 - [ ] Add music
