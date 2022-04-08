@@ -25,6 +25,7 @@ const slots = document.querySelectorAll('td');
 const resetBtn = document.getElementById('reset');
 const sasuke = document.getElementById('sasuke');
 const naruto = document.getElementById('naruto');
+const title = document.getElementById('title');
 const message = document.querySelector('h3');
 const backgroundImg = document.querySelector('div');
 const min = num => Math.max(num - 3, 0);
@@ -112,11 +113,15 @@ function renderTurn() {
   if (winner === true && turn == 1) {
     naruto.style.visibility = 'visible';
     sasuke.style.visibility = 'hidden';
+    message.style.color = 'yellow';
+    
     return;
   }
   if (winner === true && turn == -1) {
     naruto.style.visibility = 'hidden';
     sasuke.style.visibility = 'visible';
+    message.style.color = 'purple';
+    
     return;
   }
 
@@ -124,11 +129,15 @@ function renderTurn() {
       message.innerHTML = `Naruto's turn! --------------->`;
       naruto.style.visibility = 'visible';
       sasuke.style.visibility = 'hidden';
+      title.style.color = 'purple';
+      message.style.color = 'yellow';
       turn *= -1;
-  } else {
+    } else {
       message.innerHTML = `<--------------- Sasuke's turn!`;
       naruto.style.visibility = 'hidden';
       sasuke.style.visibility = 'visible';
+      title.style.color = 'yellow';
+      message.style.color = 'purple';
       turn *= -1;
   }
 }
@@ -161,9 +170,8 @@ function tieCheck() {
 function checkHorzWin(colIdx, rowIdx) {
   const player = gameBoard[colIdx][rowIdx];
   let count = 1; 
-  
   let idx = rowIdx + 1; 
-  while (idx < gameBoard.length && gameBoard[colIdx][idx] === player) {
+  while (idx < gameBoard[0].length && gameBoard[colIdx][idx] === player) {
     count++;
     idx++;
   }
@@ -197,7 +205,7 @@ function checkForwardSlash(colIdx, rowIdx) {
   let count = 1; 
   let idx1 = colIdx - 1;
   let idx2 = rowIdx + 1;
-  while (idx1 >= 0  && idx2 < gameBoard.length && gameBoard[idx1][idx2] === player) {
+  while (idx1 >= 0  && idx2 < gameBoard[0].length && gameBoard[idx1][idx2] === player) {
     count++;
     idx1--;
     idx2++;
