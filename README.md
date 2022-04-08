@@ -11,13 +11,10 @@
    <a href="mailto:alexanderjcairel@gmail.com" target="_blank">
       <img src="https://img.shields.io/badge/-user@gmail.com-c14438?style=flat&logo=Gmail&``logoColor=white">
    </a>
-<!--    <a href="https://medium.com/@user">
-      <img src="https://img.shields.io/badge/-medium.com/@user-black?style=flat&logo=medium">
-   </a> -->
 </div>
 
 <h1>:pencil: Description</h1>
-<p>Naruto and Sasuke are eternal rivals. Their rivlary is carried over into this adaptation of Connect 4. Being the arrogant ninja he is, Sasuke always lets Naruto go first. Who will win?</p>
+<p>Naruto and Sasuke are eternal rivals. Their rivalry is carried over into this adaptation of Connect 4. Being the arrogant ninja he is, Sasuke always lets Naruto go first. Who will win?</p>
 
 <details>
 <summary> :art: Wireframes</summary>
