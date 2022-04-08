@@ -1,5 +1,6 @@
 <div align="center">
-   <h1> <img src="https://i.imgur.com/Ko4W3mX.jpg"/> Konnect 4 <img src="https://i.imgur.com/0digGXP.png"/></h1>
+   <img src="https://wallpaperaccess.com/full/230556.jpg"/>
+   <h1> Konnect 4</h1>
    <h3><a href="https://ajcairel.github.io/Konnect4/">Play the Game!</a></h3>
    <h5>Alexander Cairel</h5>                             
    <a href="[github page]" target="_blank">
