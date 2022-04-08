@@ -31,9 +31,11 @@
 | Description | Screenshot |
 |------------ | ------------|
 | <h3 align="center">Starting Gameboard/Naruto's Turn</h3> | <img src="https://i.imgur.com/WLKd0rk.png" width="700"/> |
-| <h3 align="center">Naruto Win</h3> | <img src="https://i.imgur.com/OT3iZJu.png" width="700"/> |
 | <h3 align="center">Sasuke's Turn</h3> | <img src="https://i.imgur.com/c8mwz3o.png" width="700"/> |
-| <h3 align="center">Sasuke Win</h3> | <img src="https://i.imgur.com/nFkkcaM.png" width="700"/> |
+| <h3 align="center">Naruto Win (Horizontal)</h3> | <img src="https://i.imgur.com/OT3iZJu.png" width="700"/> |
+| <h3 align="center">Sasuke Win (Vertical)</h3> | <img src="https://i.imgur.com/nFkkcaM.png" width="700"/> |
+| <h3 align="center">Sasuke Win (Backslash Diagonal)</h3> | <img src="https://i.imgur.com/2h42xBH.png" width="700"/> |
+| <h3 align="center">Naruto Win (Forwardslash Diagonal)</h3> | <img src="https://i.imgur.com/tevQk3O.png" width="700"/> |
 | <h3 align="center">Tie Game</h3> | <img src="https://i.imgur.com/9O9fRl0.png" width="700"/> |
 | <h3 align="center">:warning:Full Column Attempt (Invalid) </h3> | <img src="https://i.imgur.com/0Kh5414.png" width="700"/> |
 
