@@ -3,15 +3,16 @@
    <h1> Konnect 4</h1>
    <h3><a href="https://ajcairel.github.io/Konnect4/">Play the Game!</a></h3>
    <h5>Alexander Cairel</h5>                             
-   <a href="[github page]" target="_blank">
-      <img src="https://img.shields.io/badge/-Portfolio:_user.github.io-darkgreen?style=flat&logo=medium"/>
+   <a href="https://github.com/ajcairel" target="_blank">
+      <img src="https://img.shields.io/badge/-GitHub:ajcairel-darkgreen?style=flat&logo=medium"/>
    </a>
    <a href="https://www.linkedin.com/in/alexandercairel/" target="_blank">
-      <img src="https://img.shields.io/badge/-linkedin.com/in/user-blue?style=flat&``logo=Linkedin&logoColor=white">
+      <img src="https://img.shields.io/badge/-linkedin.com/in/alexandercairel/-blue?style=flat&``logo=Linkedin&logoColor=white">
    </a> 
    <a href="mailto:alexanderjcairel@gmail.com" target="_blank">
-      <img src="https://img.shields.io/badge/-user@gmail.com-c14438?style=flat&logo=Gmail&``logoColor=white">
-   </a>
+      <img src="https://img.shields.io/badge/-alexanderjcairel@gmail.com-c14438?style=flat&logo=Gmail&``logoColor=white">
+   </a>  
+
 </div>
 
 <h1>:pencil: Description</h1>
